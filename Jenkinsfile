@@ -1,27 +1,29 @@
 pipeline{
-agent any
-stages{
-stage('1.checkout'){
-steps{
-git url : 'https://github.com/Akshay-Nair2005/dockerrepo.git',branch:'main'
-}
-}
-}
-stage('2.Build Image'){
-steps{
-bat 'docker build -t mywebsite .'
-}
-}
-stage('3.Stop/Remove old Containers'){
-steps{
-bat 'docker stop mycont || exit 0'
-bat 'docker rm mycont || exit 0'
-}
-}
-stage('Run the Image - Containerize'){
-steps{
-bat 'docker run -d -p  5000:00 --name mycont MyWebsite'
-}
-}
+  agent any
+  stages{
+    stage('1. checkout'){
+      steps{
+        git url:'https://github.com/Akshay-Nair2005/', branch:'main'
+    }
+  }
 
+    stage('2. Build Image'){
+      steps{
+         bat 'docker build -t mywebsite .' 
+      }
+    }
+
+    stage('3.Stop Old Containers'){
+      steps{
+         bat 'docker stop mycont || exit 0'
+         bat 'docker rm mycont || exit 0'
+      } 
+    }
+
+    stage('4.Run the Image- Containerize'){
+      steps{
+       bat 'docker run -d -p 5000:80 --name mycont mywebsite'
+      }
+    }
+  }
 }
