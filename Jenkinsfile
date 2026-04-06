@@ -9,7 +9,7 @@ git url : 'https://github.com/Aditya-Suresh25/docker-b3',branch:'main'
 }
 stage('2.Build Image'){
 steps{
-bat 'docker build -t Mywebsite .'
+bat 'docker build -t mywebsite .'
 }
 }
 stage('3.Stop/Remove old Containers'){
