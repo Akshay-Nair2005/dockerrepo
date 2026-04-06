@@ -3,7 +3,7 @@ agent any
 stages{
 stage('1.checkout'){
 steps{
-git url : 'https://github.com/Aditya-Suresh25/docker-b3',branch:'main'
+git url : 'https://github.com/Akshay-Nair2005/dockerrepo.git',branch:'main'
 }
 }
 }
